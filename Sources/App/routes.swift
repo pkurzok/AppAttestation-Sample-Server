@@ -1,4 +1,5 @@
 import Vapor
+import JWT
 
 func routes(_ app: Application) throws {
     app.get { req async in
@@ -11,5 +12,11 @@ func routes(_ app: Application) throws {
 
     try app.register(collection: SamplesController())
 
+    app.middleware.use(
+        AppCheckAuthenticator(
+            client: app.client,
+            logger: app.logger
+        )
+    )
     app.middleware.use(TokenAuthenticator())
 }
