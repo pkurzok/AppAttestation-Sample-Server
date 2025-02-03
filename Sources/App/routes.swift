@@ -1,3 +1,4 @@
+import Crypto
 import Vapor
 
 func routes(_ app: Application) throws {
@@ -9,7 +10,18 @@ func routes(_ app: Application) throws {
         "Hello, world!"
     }
 
-    try app.register(collection: SamplesController())
+    app.get("challenge") { req async -> String in
+        // Generate a random 16-byte value
+        let randomBytes = [UInt8].random(count: 16)
 
-    app.middleware.use(TokenAuthenticator())
+        // Compute the SHA256 hash of the random bytes
+        let hash = SHA256.hash(data: Data(randomBytes))
+
+        // Convert the hash to a hex string
+        let challenge = hash.map { String(format: "%02x", $0) }.joined()
+
+        return challenge
+    }
+
+    try app.register(collection: SamplesController())
 }
