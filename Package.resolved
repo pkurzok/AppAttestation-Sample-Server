@@ -1,6 +1,24 @@
 {
-  "originHash" : "77f2128b15e7759e8fdda36525b623fa36ec9d027106fc8770a743a7d5a6970e",
+  "originHash" : "5fefa892f90ad5ff84a9d36e3ca19050362087c7aeaf80abb2c8f478bff98899",
   "pins" : [
+    {
+      "identity" : "anchor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iansampson/Anchor",
+      "state" : {
+        "branch" : "main",
+        "revision" : "1b1d5a9eec5413247bd79ede386bb704e15fff02"
+      }
+    },
+    {
+      "identity" : "appattest",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iansampson/AppAttest.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f4fc1ea12c712d6833905d9c11c73c1601ae4001"
+      }
+    },
     {
       "identity" : "async-http-client",
       "kind" : "remoteSourceControl",
@@ -197,6 +215,15 @@
       "state" : {
         "revision" : "c8a44d836fe7913603e246acab7c528c2e780168",
         "version" : "1.4.0"
+      }
+    },
+    {
+      "identity" : "swiftcbor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/myfreeweb/SwiftCBOR",
+      "state" : {
+        "revision" : "04ccff117f6549121d5721ec84fdf0162122b90e",
+        "version" : "0.5.0"
       }
     },
     {
