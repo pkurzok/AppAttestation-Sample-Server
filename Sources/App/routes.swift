@@ -10,18 +10,11 @@ func routes(_ app: Application) throws {
         "Hello, world!"
     }
 
-    app.get("challenge") { req async -> String in
-        // Generate a random 16-byte value
-        let randomBytes = [UInt8].random(count: 16)
-
-        // Compute the SHA256 hash of the random bytes
-        let hash = SHA256.hash(data: Data(randomBytes))
-
-        // Convert the hash to a hex string
-        let challenge = hash.map { String(format: "%02x", $0) }.joined()
-
-        return challenge
-    }
-
+    try app.register(
+        collection: AttestationController(
+            appAttestStorage: app.appAttestStorage,
+            challengeStorage: app.challengeStorage
+        )
+    )
     try app.register(collection: SamplesController())
 }
