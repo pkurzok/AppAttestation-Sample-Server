@@ -12,9 +12,13 @@ func routes(_ app: Application) throws {
 
     try app.register(
         collection: AttestationController(
-            appAttestStorage: app.appAttestStorage,
+            appAttestService: app.appAttestService,
             challengeStorage: app.challengeStorage
         )
     )
-    try app.register(collection: SamplesController())
+    try app.register(
+        collection: SamplesController(
+            appAttestService: app.appAttestService
+        )
+    )
 }
